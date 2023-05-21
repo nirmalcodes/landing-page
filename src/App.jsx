@@ -1,11 +1,22 @@
 import { useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { Layout } from './components';
+import { HomePage, NotFoundPage } from './pages';
 
 function App() {
-    const [count, setCount] = useState(0);
-
     return (
         <>
-            <h1 className="text-2xl">Hello World!</h1>
+            <Routes>
+                <Route
+                    path="/"
+                    element={
+                        <Layout>
+                            <HomePage />
+                        </Layout>
+                    }
+                />
+                <Route path="*" element={<NotFoundPage />} />
+            </Routes>
         </>
     );
 }
